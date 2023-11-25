@@ -1,0 +1,2096 @@
+[
+  {
+    "id": "52501861-e15c-4dad-a9b7-6dc58ac7a0d0",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "SQUARE NECK BODYSUIT",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "umber",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 113,
+                "g": 92,
+                "b": 86,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "oxide",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 94,
+                "g": 76,
+                "b": 64,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "green-highlighter",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 215,
+                "g": 255,
+                "b": 66,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "khaki",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 164,
+                "g": 151,
+                "b": 131,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "poppy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 196,
+                "g": 61,
+                "b": 22,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "graphite",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 55,
+                "g": 60,
+                "b": 65,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "58237096-96e3-4464-8956-74b88f69d5cb",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "T-SHIRT BODYSUIT",
+    "price": 62.0,
+    "color_categories": [
+      {
+        "category_name": "COLOR",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "b0694008-0954-444b-b544-3358c8efc07f",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "LONG SLEEVE CREW NECK BODYSUIT",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "green-highlighter",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 215,
+                "g": 255,
+                "b": 66,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "khaki",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 164,
+                "g": 151,
+                "b": 131,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "poppy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 196,
+                "g": 61,
+                "b": 22,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "graphite",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 55,
+                "g": 60,
+                "b": 65,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "801611b5-38bc-49ca-b8fa-42302658ff4b",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "SLIP DRESS",
+    "price": 62.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "silver",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 168,
+                "g": 158,
+                "b": 163,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "b174d5a8-2969-47e4-971f-64da079d92cf",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "HIGH NECK BODYSUIT",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "oxide",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 94,
+                "g": 76,
+                "b": 64,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "green-highlighter",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 215,
+                "g": 255,
+                "b": 66,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "khaki",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 164,
+                "g": 151,
+                "b": 131,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "poppy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 196,
+                "g": 61,
+                "b": 22,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "graphite",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 55,
+                "g": 60,
+                "b": 65,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "a605b50d-b3cf-4c4f-b4d7-6cd9dfa86942",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "CAMI BODYSUIT",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "umber",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 113,
+                "g": 92,
+                "b": 86,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "green-highlighter",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 215,
+                "g": 255,
+                "b": 66,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "khaki",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 164,
+                "g": 151,
+                "b": 131,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "poppy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 196,
+                "g": 61,
+                "b": 22,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "graphite",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 55,
+                "g": 60,
+                "b": 65,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "mica",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 201,
+                "g": 176,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "ochre",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 179,
+                "g": 139,
+                "b": 113,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "jasper",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 117,
+                "g": 87,
+                "b": 61,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "espresso",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 53,
+                "g": 42,
+                "b": 42,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "83d9a8ed-e8c5-42c1-863f-f0b7155ad5f5",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "ONESIE",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "taffy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 238,
+                "g": 124,
+                "b": 189,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "lollipop",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 161,
+                "g": 35,
+                "b": 139,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "75a91ef8-da3f-46ca-bd3f-1c4922bc2d81",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "CAMI BODYSUIT",
+    "price": 64.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "taffy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 238,
+                "g": 124,
+                "b": 189,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "lollipop",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 161,
+                "g": 35,
+                "b": 139,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "a9cb36b1-540c-4074-bf9b-4be46f87bbf6",
+    "collection_name": "FITS EVERYBODY CORDED LACE",
+    "item_name": "SLIP DRESS",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "marble",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 240,
+                "g": 238,
+                "b": 233,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cherry-blossom",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 248,
+                "g": 211,
+                "b": 233,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "petal",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 255,
+                "g": 206,
+                "b": 237,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-rose",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 253,
+                "g": 89,
+                "b": 153,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "sand",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 218,
+                "g": 192,
+                "b": 167,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "clay",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 211,
+                "g": 186,
+                "b": 161,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sienna",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 139,
+                "g": 102,
+                "b": 88,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "bronze",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 176,
+                "g": 127,
+                "b": 91,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "11833471-3d63-4a7e-82f3-2810636b1855",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "STRAPLESS BODYSUIT",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "khaki",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 164,
+                "g": 151,
+                "b": 131,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "poppy",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 196,
+                "g": 61,
+                "b": 22,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "graphite",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 55,
+                "g": 60,
+                "b": 65,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "09eea0c9-88d8-48dc-82f9-6c48686b8622",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "PLUNGE BODYSUIT",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "b3efc5e2-9c83-4219-9241-49bcc7441974",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "ZIP BODYSUIT",
+    "price": 72.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "35d33390-8887-41e2-87f2-4521fff4b80c",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "LONG SLEEVE LOW BACK BODYSUIT",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "41525fd2-e6fc-4a26-909a-c162af71dfba",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "HIGH CUT BODYSUIT",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "green-highlighter",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 215,
+                "g": 255,
+                "b": 66,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "neon-pink",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 202,
+                "g": 79,
+                "b": 142,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "faadb173-4459-41e3-ae3f-e6b8cd2e5c6d",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "LONG SLEEVE SCOOP BODYSUIT",
+    "price": 68.0,
+    "color_categories": [
+      {
+        "category_name": "LIMITED EDITION",
+        "colors": [
+          {
+            "color_name": "neon-orchid",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 227,
+                "g": 134,
+                "b": 183,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "slate",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 127,
+                "g": 136,
+                "b": 160,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "sapphire",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 29,
+                "g": 67,
+                "b": 129,
+                "a": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "category_name": "CLASSIC SHADES",
+        "colors": [
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "954ec738-2d20-4023-ae45-d26a9b7f01b0",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "LEGGING",
+    "price": 58.0,
+    "color_categories": [
+      {
+        "category_name": "COLOR",
+        "colors": [
+          {
+            "color_name": "cocoa",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 73,
+                "g": 53,
+                "b": 46,
+                "a": 255
+              }
+            }
+          },
+          {
+            "color_name": "onyx",
+            "color_value": {
+              "hex": "",
+              "rgba": {
+                "r": 45,
+                "g": 45,
+                "b": 47,
+                "a": 255
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "f84cf508-b813-4969-9d1f-f519cc3d1bf4",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "THONG",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "cb4ddb61-c88b-4381-a980-0d4caf75f0a9",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "DIPPED FRONT THONG",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "3e7238af-0c35-48a8-be36-bf5cb925f8b8",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "CHEEKY BRIEF",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "dbba28d0-59ea-49ff-b45e-8f89245b56c3",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "BOY SHORT",
+    "price": 22.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "69b96be5-6584-4698-a19b-3f74aa6e1fd1",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "STRING THONG",
+    "price": 16.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "20f139ef-d718-4b22-a6e9-a8525d983eb9",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "DIPPED THONG",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "79766081-22b6-47a0-b24d-1e69bdfe4d36",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "BOY SHORT",
+    "price": 22.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "ce5b4cd0-dbeb-40af-9683-c8a2a2561273",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "HIGH-WAISTED THONG",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "3e762932-c2ef-4d80-a300-05733dfdfd12",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "FULL BRIEF",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "eca46e6f-292d-4e21-a135-7dc4d254e3c7",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "MICRO THONG",
+    "price": 14.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "fa6c6d5e-92b8-4f52-b1e7-504cbae37bbd",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "T-STRING THONG",
+    "price": 14.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "4906b089-2fd7-4c8a-93ae-bda11fc6c1ba",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "BRIEF",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "8c71a888-e4ec-425f-a93d-0a3e877bf6f8",
+    "collection_name": "FITS EVERYBODY LACE",
+    "item_name": "TANGA",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "9f9890a1-e22f-4e71-830a-d76dc44038c8",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "STRING BIKINI",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "ae41d5ea-272b-4d14-8c40-08d2f6fd23c3",
+    "collection_name": "FITS EVERYBODY CORDED LACE",
+    "item_name": "DIPPED THONG",
+    "price": 18.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "d3f167ed-d198-4ba7-9504-9c4c88fdb1b1",
+    "collection_name": "FITS EVERYBODY",
+    "item_name": "HIPSTER",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "0885187d-b834-40e4-b7ef-54adb565cbc3",
+    "collection_name": "FITS EVERYBODY CORDED LACE",
+    "item_name": "STRING THONG",
+    "price": 16.0,
+    "color_categories": [],
+    "images": []
+  },
+  {
+    "id": "abf48d92-db61-4cb3-bc87-1f95aab0abd4",
+    "collection_name": "FITS EVERYBODY CORDED LACE",
+    "item_name": "TANGA",
+    "price": 20.0,
+    "color_categories": [],
+    "images": []
+  }
+]
