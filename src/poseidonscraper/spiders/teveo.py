@@ -1,6 +1,10 @@
 """Teveo Spider
 
-This spider is used to crawl the teveo.com website for products.
+This spider is used to crawl the teveo.com website and extracts the following
+information from the product pages:
+
+- Product Name
+...
 
 Categories (default all):
     - leggings

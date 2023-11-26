@@ -62,12 +62,7 @@ class OceansapartItem(scrapy.Item):
         input_processor=MapCompose(extract_materials),
     )
     sizes = scrapy.Field(input_processor=Compose(lambda x: x[1:]))
-    color_name = scrapy.Field(
-        input_processor=MapCompose(str.lower), output_processor=TakeFirst()
-    )
-    color_value = scrapy.Field(
-        input_processor=MapCompose(str.lower), output_processor=TakeFirst()
-    )
+    color = scrapy.Field(output_processor=TakeFirst())
     price = scrapy.Field(
         # SurrealDB handles Price Object
         input_processor=MapCompose(lambda x: float(x.replace("\xa0", ""))),

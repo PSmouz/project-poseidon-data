@@ -1,3 +1,25 @@
+"""Oceansapart Spider
+
+This spider crawls the oceansapart.com website and extracts the following
+information from the product pages:
+
+- Product Name
+- Product Category
+- Product Images
+- Product Materials
+- Product Sizes
+- Product Color (Name, Value)
+- Product Price
+
+Categories (default all):
+    - leggings
+    - skorts
+    - underwear
+    - dresses
+
+Example Usage:
+    scrapy crawl oceansapart -a categories=leggings
+"""
 import re
 import uuid
 
@@ -6,29 +28,13 @@ import scrapy
 from scrapy.http import Request
 from scrapy.loader import ItemLoader
 
-# from src.poseidonscraper.poseidonscraper.items import OceansapartItem
-
-
-###
-### Example Usage:
-### scrapy crawl oceansapart -a categories=leggings -O oceansapart_en-de_11_20_2023.json
-### Categories: leggings,skorts,underwear,dresses
-###
+from ..items import OceansapartItem
 
 
 class OceansapartSpider(scrapy.Spider):
     name = "oceansapart"
     allowed_domains = ["www.oceansapart.com", "cdn.oceansapart.com"]
     color_map = {}
-
-    #
-    # Control the logging level for Selenium and urllib3 to make console more
-    # readable.
-    #
-    # Set the logging level for the Selenium remote_connection logger to ERROR
-    # logging.getLogger('selenium.webdriver.remote.remote_connection').setLevel(logging.ERROR)
-    # Set the logging level for urllib3.connectionpool logger to WARNING
-    # logging.getLogger('urllib3.connectionpool').setLevel(logging.WARNING)
 
     def __init__(self, categories=None, *args, **kwargs):
         super(OceansapartSpider, self).__init__(*args, **kwargs)
@@ -54,7 +60,7 @@ class OceansapartSpider(scrapy.Spider):
         ]
 
     def start_requests(self):
-        # Get the color map from the CSS file
+        """Placeholder"""
         self.get_color_map()
 
         for url in self.start_urls:
@@ -66,9 +72,14 @@ class OceansapartSpider(scrapy.Spider):
             )
 
     def parse_products(self, response):
+        """
+
+        Args:
+            response:
+        """
         products = response.css(".card__details::attr(href)").extract()
 
-        for item_url in products:
+        for item_url in products[:1]:
             yield response.follow(
                 item_url,
                 callback=self.parse_item,
@@ -85,6 +96,11 @@ class OceansapartSpider(scrapy.Spider):
             )
 
     def parse_item(self, response):
+        """
+
+        Args:
+            response:
+        """
         color_code = (
             response.xpath(
                 "string(//*[contains(@class, "
@@ -94,57 +110,51 @@ class OceansapartSpider(scrapy.Spider):
             .split(" ")[1]
         )
 
-        # id = re.search(r'postid-(\d+)', response.xpath('//body/@class').get()).group(1)
-        # product = requests.get(f"https://www.oceansapart.com/de/wp-json/wc/store/v1/products/{id}").json()
-        # image_urls = [image['src'] for image in product['images']]
-        # sizes = [size['attributes'][0]['value'] for size in product['variations']].reverse()
-
-        l = ItemLoader(item=OceansapartItem(), response=response)
-        l.add_value("url", response.url)
-        l.add_value("id", str(uuid.uuid4()))
-        l.add_xpath(
+        loader = ItemLoader(item=OceansapartItem(), response=response)
+        loader.add_value("url", response.url)
+        loader.add_value("id", str(uuid.uuid4()))
+        loader.add_xpath(
             "name", "/html/body/main/main/section/article/div[1]/h1/text()"
         )
-        l.add_value("category_name", response.meta["original_url"])
-        l.add_xpath(
+        loader.add_value("category_name", response.meta["original_url"])
+        loader.add_xpath(
             "images",
             '//*[@id="productDetailsCarousel"]//*[not(contains(@class, '
             '"tns-slide-cloned"))]/@href',
         )
-        l.add_xpath(
+        loader.add_xpath(
             "materials",
             "/html/body/main/main/section/article/div[4]/div[2]/div/ul",
         )
-        l.add_xpath(
+        loader.add_xpath(
             "sizes",
             "/html/body/main/main/section/article/form/div["
             "1]/select/option/text()",
         )
-        l.add_xpath(
-            "color_name",
-            "/html/body/main/main/section/article/div[1]/h1/span/text()",
+        loader.add_value(
+            "color",
+            {
+                "name": response.xpath(
+                    "/html/body/main/main/section/article/div[1]/h1/span/text()"
+                )
+                .get()
+                .lower(),
+                "value": self.color_map[color_code],
+            },
         )
-        l.add_value("color_value", self.color_map[color_code])
-        l.add_xpath(
+        loader.add_xpath(
             "price",
             "/html/body/main/main/section/article/div[2]/p/span/bdi/text()",
         )
-        l.add_xpath(
+        loader.add_xpath(
             "price",
             "/html/body/main/main/section/article/div[2]/p/del/span/bdi/text()",
         )  # Sale Price
-        # l.add_xpath("name", '/html/body/main/main/section/article/div[
-        # 1]/h1/text()') l.add_value("category_name", response.meta[
-        # 'original_url']) l.add_value("images", image_urls) l.add_value(
-        # "materials", product['description']) l.add_value("sizes", sizes)
-        # l.add_xpath("color_name",
-        # '/html/body/main/main/section/article/div[1]/h1/span/text()')
-        # l.add_value("color_value", self.color_map[color_code]) l.add_value(
-        # "price", product['prices']['price']) l.add_value("price", product[
-        # 'prices']['sale_price'])
-        yield l.load_item()
+
+        yield loader.load_item()
 
     def get_color_map(self):
+        """Requests a css file for color map."""
         url = (
             "https://cdn.oceansapart.com/de/wp-content/plugins/oceansapart"
             "-extensions/includes/color-bubbles/css/colors.css?ver=3.112.0"
@@ -154,7 +164,15 @@ class OceansapartSpider(scrapy.Spider):
 
 
 def parse_css_colors(css):
-    # Define a regular expression pattern
+    """
+    Parses a CSS file and returns a dictionary of selectors and colors.
+
+    Args:
+        css:
+
+    Returns:
+
+    """
     pattern = (
         r"\.([\w-]+)(?:,\s*([\w-]+))?\s*{\s*background-color\s*:\s*#(["
         r"0-9a-fA-F]+)(?:\s*;\s*)?}"
@@ -181,3 +199,21 @@ def parse_css_colors(css):
             parsed_data[selector] = "#" + background_color
 
     return parsed_data
+
+
+# JSON Alternative:
+# id = re.search(r'postid-(\d+)', response.xpath('//body/@class').get(
+# )).group(1) product = requests.get(
+# f"https://www.oceansapart.com/de/wp-json/wc/store/v1/products/{id}").json()
+# image_urls = [image['src'] for image in product['images']] sizes = [size[
+# 'attributes'][0]['value'] for size in product['variations']].reverse()
+
+# l.add_xpath("name", '/html/body/main/main/section/article/div[
+# 1]/h1/text()') l.add_value("category_name", response.meta[
+# 'original_url']) l.add_value("images", image_urls) l.add_value(
+# "materials", product['description']) l.add_value("sizes", sizes)
+# l.add_xpath("color_name",
+# '/html/body/main/main/section/article/div[1]/h1/span/text()')
+# l.add_value("color_value", self.color_map[color_code]) l.add_value(
+# "price", product['prices']['price']) l.add_value("price", product[
+# 'prices']['sale_price'])
