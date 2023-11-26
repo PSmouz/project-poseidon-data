@@ -2,14 +2,18 @@
 
 This spider is used to crawl the teveo.com website for products.
 
-Categories:
+Categories (default all):
     - leggings
     - underwear
 
-Example Usage:
-    scrapy crawl teveo -a -a categories=leggings,underwear
-"""
+Country (default us):
+    - us (not all items yet)
+    - de
 
+Example Usage:
+    scrapy crawl teveo -a categories=leggings,underwear
+"""
+import argparse
 import json
 import math
 import re
@@ -24,7 +28,7 @@ from ..items import TeveoItem
 
 class TeveoSpider(scrapy.Spider):
     name = "teveo"
-    allowed_domains = ["teveo.com"]
+    allowed_domains = ["teveo.com", "us.teveo.com"]
     collections = [
         "Candy",
         "Charming",
@@ -45,22 +49,29 @@ class TeveoSpider(scrapy.Spider):
         "V-Shape",
     ]
 
-    def __init__(self, categories=None, *args, **kwargs):
+    def __init__(self, categories=None, country=None, *args, **kwargs):
         super(TeveoSpider, self).__init__(*args, **kwargs)
 
-        # Select Category from CL Argument
+        # Parse command line arguments
         if categories is None:
             categories = ["leggings", "underwear"]
         else:
             categories = categories.split(",")
 
+        if country is None:
+            country = "us"
+
         category_paths = {
             "leggings": "hosen-leggings/",
             "underwear": "sport-unterwaesche/",
         }
+        county_map = {"us": "us.", "de": ""}
 
         self.start_urls = [
-            f"https://teveo.com/collections/{category_paths[cat]}"
+            (
+                f"https://{county_map[country]}teveo.com/collections"
+                f"/{category_paths[cat]}"
+            )
             for cat in categories
         ]
 
@@ -89,7 +100,7 @@ class TeveoSpider(scrapy.Spider):
             '//span[contains(@class, "card-information__text")]/a/@href'
         ).extract()
 
-        for product in products[:1]:
+        for product in products:
             item_url = (
                 "https://" + self.allowed_domains[0] + product + ".js"
             )  # Gets Json directly
@@ -106,9 +117,7 @@ class TeveoSpider(scrapy.Spider):
             response:
         """
         product = json.loads(response.text)
-
         name, color, collection = self.parse_title(product["title"])
-
         loader = ItemLoader(item=TeveoItem(), response=response)
         loader.add_value("url", response.url.split(".js")[0])
         loader.add_value("id", str(uuid.uuid4()))

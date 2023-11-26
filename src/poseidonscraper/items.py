@@ -12,27 +12,6 @@ from itemloaders.processors import MapCompose, TakeFirst, Compose
 from src.utils import extract_materials
 
 
-def extract_materials_german(value):
-    """
-
-    Args:
-        value:
-
-    Returns:
-
-    """
-    # Regex pattern to match percentage and material
-    pattern = re.compile(
-        r"(\d{1,3}%)\s*([\w\s]+?)(?=(?:\s*,|\s*und|\s*<|\s*(?:\d{1,3}%|$)))"
-    )
-    # Extract matches from the value
-    matches = pattern.findall(value)
-    result = [
-        f"{percentage} {material.lower()}" for percentage, material in matches
-    ]
-    return result
-
-
 def take_max(values):
     """
 
@@ -137,7 +116,7 @@ class TeveoItem(scrapy.Item):
         input_processor=MapCompose(str.strip), output_processor=TakeFirst()
     )
     category_name = scrapy.Field(
-        input_processor=MapCompose(lambda x: x.split("/")[-2].split("-")[1]),
+        input_processor=MapCompose(lambda x: x.split("/")[4].split("-")[1]),
         output_processor=TakeFirst(),
     )
     collection_name = scrapy.Field(output_processor=TakeFirst())
