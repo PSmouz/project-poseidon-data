@@ -29,6 +29,7 @@ from scrapy.http import Request
 from scrapy.loader import ItemLoader
 
 from ..items import OceansapartItem
+from ...utils import parse_css_colors, color_map
 
 
 class OceansapartSpider(scrapy.Spider):
@@ -79,7 +80,7 @@ class OceansapartSpider(scrapy.Spider):
         """
         products = response.css(".card__details::attr(href)").extract()
 
-        for item_url in products[:1]:
+        for item_url in products:
             yield response.follow(
                 item_url,
                 callback=self.parse_item,
@@ -155,50 +156,14 @@ class OceansapartSpider(scrapy.Spider):
 
     def get_color_map(self):
         """Requests a css file for color map."""
-        url = (
-            "https://cdn.oceansapart.com/de/wp-content/plugins/oceansapart"
-            "-extensions/includes/color-bubbles/css/colors.css?ver=3.112.0"
-        )
-        css = requests.get(url).text
-        self.color_map = parse_css_colors(css)
-
-
-def parse_css_colors(css):
-    """
-    Parses a CSS file and returns a dictionary of selectors and colors.
-
-    Args:
-        css:
-
-    Returns:
-
-    """
-    pattern = (
-        r"\.([\w-]+)(?:,\s*([\w-]+))?\s*{\s*background-color\s*:\s*#(["
-        r"0-9a-fA-F]+)(?:\s*;\s*)?}"
-    )
-    # Find all matches using the pattern
-    matches = re.findall(pattern, css)
-    # Create a dictionary to store the parsed data
-    parsed_data = {}
-    # Process each match and populate the dictionary
-    for match in matches:
-        selector1, selector2, background_color = match
-        selector1 = selector1.strip()
-        selector2 = selector2.strip() if selector2 else None
-        background_color = background_color.strip()
-
-        # Handle multiple selectors
-        if selector2:
-            selectors = [selector1, selector2]
-        else:
-            selectors = [selector1]
-
-        for selector in selectors:
-            # Update the parsed_data dictionary
-            parsed_data[selector] = "#" + background_color
-
-    return parsed_data
+        # TODO: Fix regex
+        # url = (
+        #     "https://cdn.oceansapart.com/de/wp-content/plugins/oceansapart"
+        #     "-extensions/includes/color-bubbles/css/colors.css?ver=3.112.0"
+        # )
+        # css = requests.get(url).text
+        # self.color_map = parse_css_colors(css)
+        self.color_map = color_map.copy()
 
 
 # JSON Alternative:

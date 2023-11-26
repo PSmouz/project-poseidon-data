@@ -3,7 +3,7 @@ Test the utils module.
 """
 import unittest
 
-from src.utils import extract_materials
+from src.utils import extract_materials, parse_css_colors
 
 
 class ExtractMaterialsTest(unittest.TestCase):
@@ -132,6 +132,125 @@ class ExtractMaterialsTest(unittest.TestCase):
         result = extract_materials(value)
         self.assertEqual(result, expected_result)
 
+    def test_nvgtn_case_1(self):
+        """NVGTN Case 1:"""
+        value = """<meta charset="utf-8"><meta charset="utf-8"><p><span 
+        style="font-weight: 400;">Crush goals and hearts in the sleek and 
+        powerful Performance Seamless Leggings. Crafted from the same buttery 
+        soft blend of materials that make up our Contour 2.0 Leggings, these 
+        leggings have unmatched comfort while keeping up with your every move. 
+        The </span><span style="font-weight: 400;">compressive waistband hugs 
+        your waist, while the dramatic contour shading accentuates your glutes 
+        and legs leaving you looking sculpted, while feeling supported.</span>
+        </p><br><p><span style="font-weight: 400;">- Nylon, polyester and 
+        spandex</span></p><p><span style="font-weight: 400;">- Fabric feels… 
+        lightweight, soft, stretchy</span></p><p><span style="font-weight: 
+        400;">- High waisted </span></p><p><span style="font-weight: 400;">- 
+        Compressive waistband</span></p><p><span style="font-weight: 400;">- 
+        Leg and glute contour shading</span></p><p><span style="font-weight: 
+        400;">- Seamless</span><br></p><h5>Model Specs</h5><meta 
+        charset="utf-8"><p><span style="font-weight: 400;">Height: 5'2"</span>
+        </p><p><span style="font-weight: 400;">Bust: 32"</span></p><p><span 
+        style="font-weight: 400;">Waist: 24”</span></p><p><span 
+        style="font-weight: 400;">Hips: 36”</span></p><p><span style="font-
+        weight: 400;">Size: XS</span></p><h5><span mce-data-marked="1">Material 
+        Make-Up</span></h5><p><span style="font-weight: 400;">54% Nylon</span>
+        </p><p><span style="font-weight: 400;">30% Polyester</span></p><p><span 
+        style="font-weight: 400;">16% Spandex</span><br></p><div 
+        style="position: absolute; left: -22px; top: 378.594px;" id="gtx-trans">
+        <div class="gtx-trans-icon"><br></div></div>"""
+        expected_result = ["54% nylon", "30% polyester", "16% spandex"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_nvgtn_case_2(self):
+        """NVGTN Case 2:"""
+        value = """<meta charset="utf-8"><meta charset="utf-8"><p><span>Turn 
+        heads and strut with confidence in the gym with our new NVGTN Contour 
+        seamless leggings. These leggings have contour shadowing designed to 
+        enhance the beauty of your natural curves. Made with a buttery soft 
+        blend of materials, these leggings will feel weightless on your body 
+        while hugging you in all the right places, allowing you to crush your 
+        workout without any disturbances or discomforts. These leggings are a 
+        must have in your gym wardrobe and pair perfectly with our seamless crop
+         tops!</span></p><br><p>- Nylon and spandex</p><p>- Fabric feels… 
+         lightweight, soft, stretchy</p><p>- High waisted </p><p>- 
+         Compressive waistband</p><p>- Thigh and glute contour shading</p><p>- 
+         Seamless</p><ul></ul><h5>Model Specs</h5><meta charset="utf-8"><p><span
+          style="font-weight: 400;">Height: 5'2"</span></p><p><span style="font-
+          weight: 400;">Bust: 32"</span></p><p><span style="font-weight: 400;">
+          Waist: 24”</span></p><p><span style="font-weight: 400;">Hips: 36”
+          </span></p><p><span style="font-weight: 400;">Size: XS</span></p><h5>
+          <span>Material Make-Up</span></h5><p><meta charset="utf-8">
+          <span>87% </span><span>Nylon</span><br><span>13</span><span>% 
+          </span><span>Spandex</span></p><div style="position: absolute; left: 
+          -4px; top: 378.594px;" id="gtx-trans"><div class="gtx-trans-icon">
+          </div></div>"""
+        expected_result = ["87% nylon", "13% spandex"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+
+class ParseCSSColorsTest(unittest.TestCase):
+    def test_case_1(self):
+        value = parse_css_colors(
+            ".oa-product-color--limona,.oa-product-color--limon {"
+            "background-color: #f6ff9f;}"
+        )
+        expected_result = {
+            "oa-product-color--limona": "#f6ff9f",
+            "oa-product-color--limon": "#f6ff9f",
+        }
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_case_2(self):
+        value = parse_css_colors(
+            ".oa-product-color--moon-blue {background-color: #343646}"
+        )
+        expected_result = {
+            "oa-product-color--moon-blue": "#343646",
+        }
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_case_3(self):
+        value = parse_css_colors(
+            ".oa-product-color--crystal-white {background-color: "
+            "#f8faff;border: 0.0625rem solid rgba(16, 16, 16, 0.6) !important;}"
+        )
+        expected_result = {
+            "oa-product-color--crystal-white": "#f8faff",
+        }
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_case_4(self):
+        value = parse_css_colors(
+            ".oa-product-color--bold-hot-pink-swirl {background-color: "
+            "#ed3b90;}"
+        )
+        expected_result = {
+            "oa-product-color--bold-hot-pink-swirl": "#ed3b90",
+        }
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_case_5(self):
+        value = parse_css_colors(
+            ".oa-product-color-- * {border: 0.0625rem solid rgba(16, 16, 16, "
+            "0.3);}"
+        )
+        expected_result = {}
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
 
 if __name__ == "__main__":
     unittest.main()
+
+
+#  NVTGN TEST
+
+
+# Not handled yet
