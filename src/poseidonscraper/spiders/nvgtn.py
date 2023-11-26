@@ -73,15 +73,8 @@ class NVGTNSpider(scrapy.Spider):
             response:
         """
         pattern = r"collection_count:\s*(\d+)"
-
         matches = re.search(pattern, response.text)
-
         products_amount = matches.group(1)
-
-        # products_amount = response.xpath(
-        #     '//*[@id="Collection"]/div[3]/div[2]/div[3]/div[1]'
-        # ).get()
-        print(products_amount)
 
         for i in range(math.ceil(int(products_amount) / 16)):
             products_url = response.url + "?page=" + str(i + 1)
@@ -98,7 +91,7 @@ class NVGTNSpider(scrapy.Spider):
             '//div[contains(@class, "product-card")]/a/@href'
         ).extract()
 
-        for product in products[:1]:
+        for product in products:
             item_url = (
                 "https://"
                 + self.allowed_domains[0]
@@ -106,7 +99,7 @@ class NVGTNSpider(scrapy.Spider):
                 + product.split("/")[-1]
                 + ".js"
             )  # Gets Json directly
-            print(item_url)
+
             yield Request(
                 item_url,
                 callback=self.parse_item,
@@ -126,7 +119,9 @@ class NVGTNSpider(scrapy.Spider):
         loader.add_value("id", str(uuid.uuid4()))
         loader.add_value("name", product["title"])
         loader.add_value("category_name", response.meta["original_url"])
-        # loader.add_value("collection_name", collection)
+        loader.add_value(
+            "collection_name", self.get_collection(product["title"])
+        )
         loader.add_value(
             "images", ["https:" + image for image in product["images"]]
         )
@@ -139,3 +134,26 @@ class NVGTNSpider(scrapy.Spider):
         loader.add_value("price", product["compare_at_price"])
 
         yield loader.load_item()
+
+    @staticmethod
+    def get_collection(title):
+        """
+
+        Args:
+            title:
+        """
+        collection_map = {
+            "contour": "NVGTN Contour",
+            "curve": "Curve Seamless",
+            "scrunch": "Scrunch Seamless",
+            "solid": "Solid Seamless",
+            "camo": "Camo Seamless",
+            "snakeskin": "Wild Thing Seamless",
+            "zebra": "Wild Thing Seamless",
+            "leopard": "Wild Thing Seamless",
+            "signature": "Signature 2.0",
+        }
+
+        for key in collection_map.keys():
+            if key in title.lower():
+                return collection_map[key]

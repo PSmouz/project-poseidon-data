@@ -139,7 +139,11 @@ class NVGTNItem(scrapy.Item):
         input_processor=MapCompose(str.strip), output_processor=TakeFirst()
     )
     category_name = scrapy.Field(
-        input_processor=MapCompose(lambda x: x.split("/")[4].split("-")[1]),
+        input_processor=MapCompose(
+            lambda x: x.split("/")[4].split("-")[1]
+            if "accessories" not in x
+            else "underwear"
+        ),
         output_processor=TakeFirst(),
     )
     collection_name = scrapy.Field(output_processor=TakeFirst())

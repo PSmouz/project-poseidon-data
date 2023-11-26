@@ -160,8 +160,7 @@ class LoungeSpider(scrapy.Spider):
 
         return matches[0]
 
-    @staticmethod
-    def get_rating(product_id):
+    def get_rating(self, product_id):
         """
 
         Args:
@@ -177,11 +176,13 @@ class LoungeSpider(scrapy.Spider):
             "page": "1",
             "take": "24",
         }
-        data = requests.get(url, params=params).json()
-        # scrapy.Request(
-        #     "https://stamped.io/api/widget/reviews?productId=6796023726132"
-        #     "&storeUrl=germanylounge.myshopify.com&page=1&take=24",
-        # )
+        data = requests.get(  # Chance auch nur overflow
+            url, params=params, headers=self.get_headers()
+        ).json()
+        scrapy.Request(
+            "https://stamped.io/api/widget/reviews?productId=6796023726132"
+            "&storeUrl=germanylounge.myshopify.com&page=1&take=24",
+        )
         return {
             "rating": data["rating"] or 0.0,
             "reviews_number": data["total"] or 0,
@@ -201,8 +202,8 @@ class LoungeSpider(scrapy.Spider):
             "ar;q=0.5",
             "Connection": "keep-alive",
             "DNT": "1",
-            "Origin": "https://us.lounge.com",
-            "Referer": "https://us.lounge.com/",
+            "Origin": "https://de.lounge.com",
+            "Referer": "https://de.lounge.com/",
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Mode": "cors",
             "Sec-Fetch-Site": "cross-site",

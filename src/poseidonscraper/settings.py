@@ -137,7 +137,7 @@ FEED_EXPORT_ENCODING = "utf-8"
 # LOG_FORMAT = '%(asctime)s [%(name)s] %(levelname)s: %(message)s'
 # LOG_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
 
-LOG_LEVEL = "DEBUG"  # Set the desired log level, e.g., INFO, WARNING, ERROR
+LOG_LEVEL = "INFO"  # Set the desired log level, e.g., INFO, WARNING, ERROR
 # LOG_APPEND = True  # Append to the file instead of overwriting LOG_FILE =
 # 'logs/log.txt'  # Specify
 # the log file
