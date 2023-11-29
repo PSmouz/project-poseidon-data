@@ -190,6 +190,152 @@ class ExtractMaterialsTest(unittest.TestCase):
         result = extract_materials(value)
         self.assertEqual(result, expected_result)
 
+    def test_alphalete_case_1(self):
+        """Alphalete Case 1:"""
+        value = """\u003cmeta charset=\"utf-8\"\u003e\n\u003cp 
+        data-mce-fragment=\"1\"\u003e\u003cb 
+        data-mce-fragment=\"1\"\u003e\u003ci 
+        data-mce-fragment=\"1\"\u003eHIGHLIGHTS\u003c\/i\u003e\u003c\/b\u003e
+        \u003c\/p\u003e\n\u003cul data-mce-fragment=\"1\"\u003e\n\u003cli 
+        class=\"li1\" data-mce-fragment=\"1\"\u003e\n\u003cspan class=\"s1\" 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eSculpting 
+        seamlines\u003c\/li\u003e\n\u003cli class=\"li1\" 
+        data-mce-fragment=\"1\"\u003eButtery soft hand 
+        feel\u003c\/li\u003e\n\u003cli class=\"li1\" 
+        data-mce-fragment=\"1\"\u003eHigh Stretch\u003c\/li\u003e\n\u003cli 
+        class=\"li1\" data-mce-fragment=\"1\"\u003eFlared 
+        leg\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp 
+        data-mce-fragment=\"1\"\u003e\u003cb 
+        data-mce-fragment=\"1\"\u003e\u003ci data-mce-fragment=\"1\"\u003eFIT 
+        SUGGESTION\u003c\/i\u003e\u003c\/b\u003e\u003c\/p\u003e\n\u003cul 
+        data-mce-fragment=\"1\"\u003e\n\u003cli 
+        data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eThis item&nbsp;runs 
+        true to Alphalete's standard sizing.\u003c\/li\u003e\n\u003cli 
+        data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eWe recommend sizing up 
+        for a more relaxed fit or down for a more compressive 
+        fit.\u003c\/li\u003e\n\u003cli 
+        data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eModel is 
+        5’10”\/177.8cm, wearing a size\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;M\u003c\/span\u003e\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;\u003c\/span\u003ewith 
+        40\"\/101.6cm hips and 28”\/71.1cm 
+        waist.\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp 
+        data-mce-fragment=\"1\"\u003e\u003cb 
+        data-mce-fragment=\"1\"\u003e\u003ci 
+        data-mce-fragment=\"1\"\u003eMATERIALS AND WASHING 
+        DIRECTIONS\u003c\/i\u003e\u003c\/b\u003e\u003c\/p\u003e\n\u003cul 
+        data-mce-fragment=\"1\"\u003e\n\u003cli 
+        data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003e75%\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;\u003c\/span\u003eNylon,\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;\u003c\/span\u003e25%\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;\u003c\/span\u003eSpandex\u003c
+        \/li\u003e\n\u003cli data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eWe recommend washing 
+        inside-out on a cold setting\u003c\/li\u003e\n\u003cli 
+        data-mce-fragment=\"1\"\u003e\n\u003cspan 
+        data-mce-fragment=\"1\"\u003e\u003c\/span\u003eHang to 
+        dry\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp 
+        data-mce-fragment=\"1\"\u003e\u003cb 
+        data-mce-fragment=\"1\"\u003e\u003ci 
+        data-mce-fragment=\"1\"\u003eDESCRIPTION\u003c\/i\u003e\u003c\/b
+        \u003e\u003c\/p\u003e\n\u003cp data-mce-fragment=\"1\"\u003eDiscover 
+        a fusion of supreme comfort and high-stretch compression with our new 
+        Aura fabric. Made with irresistibly soft, brushed fabric, 
+        our&nbsp;pants\u003cspan 
+        data-mce-fragment=\"1\"\u003e&nbsp;\u003c\/span\u003eoffer you 
+        unrestricted movement whether you're headed to the gym, a yoga class, 
+        or simply lounging at home. We've strategically placed sculpting 
+        seamlines to not only draw in the waist but also enhance the natural 
+        shape of the glutes.&nbsp;\u003c\/p\u003e"""
+
+        expected_result = ["75% nylon", "25% spandex"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_alphalete_case_2(self):
+        """Alphalete Case 2:"""
+        value = """<meta charset="UTF-8"><p data-mce-fragment="1"><b 
+        data-mce-fragment="1"><i data-mce-fragment="1">HIGHLIGHTS</i></b></p>
+        <ul data-mce-fragment="1"><li><span></span>Moisture wicking</li><li>
+        <span></span>Medium impact performance<span class="Apple-converted-
+        space">&nbsp;</span></li><li><span></span>Super high waisted style fit
+        </li><li><span></span>No front rise</li><li><span></span>25” inseam</li>
+        <li><span></span>Reinforced stitching<span class="Apple-converted-space"
+        >&nbsp;</span></li><li><span></span>Alphalete script logo in silicone
+        </li></ul><p data-mce-fragment="1"><br data-mce-fragment="1"></p><p 
+        data-mce-fragment="1"><b data-mce-fragment="1"><i data-mce-fragment="1">
+        FIT SUGGESTION</i></b></p><ul data-mce-fragment="1"><li data-mce-
+        fragment="1"><span data-mce-fragment="1"></span><span data-mce-fragment
+        ="1">This item runs true to Alphalete’s standard fit</span>.</li>
+        <li class="li2" data-mce-fragment="1">If you are between sizes, we 
+        recommend sizing up.</li><li data-mce-fragment="1"><span data-mce-
+        fragment="1"></span><span data-mce-fragment="1">Model is <meta charset=
+        "UTF-8">5’5”/165cm, wearing a size S with a 27”/68cm waist and 
+        38”/96.5cm hips.</span></li></ul><p data-mce-fragment="1"><br data-mce-
+        fragment="1"></p><p data-mce-fragment="1"><b data-mce-fragment="1"><i 
+        data-mce-fragment="1">MATERIALS AND WASHING DIRECTIONS</i></b></p><ul 
+        data-mce-fragment="1"><li data-mce-fragment="1"><span data-mce-
+        fragment="1"></span>78% Nylon, 22%&nbsp;Elastane</li><li data-mce-
+        fragment="1"><span data-mce-fragment="1"></span>We recommend washing 
+        inside-out on a cold setting</li><li data-mce-fragment="1"><span data-
+        mce-fragment="1"></span>Hang to dry</li></ul><p data-mce-fragment="1">
+        <br data-mce-fragment="1"></p><p data-mce-fragment="1"><b data-mce-
+        fragment="1"><i data-mce-fragment="1">DESCRIPTION</i></b></p><p>The 
+        Pulse Collection is made with our signature Nylon / Elastane blend; 
+        a high-performance material that offers incredible breathability and the
+         right amount of compression. The fabric is slick and soft, yet 
+         extremely performant and supportive. At its core, Pulse is the electric
+          current that brings the much needed spark back into your day and with
+           its ability to evaporate moisture quickly, it will always keep you 
+           looking and feeling your best.</p>"""
+
+        expected_result = ["78% nylon", "22% elastane"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_alphalete_case_3(self):
+        """Alphalete Case 3:"""
+        value = """<meta charset="utf-8"><h4 class="p1" data-mce-fragment="1">
+        <b data-mce-fragment="1"><i data-mce-fragment="1">HIGHLIGHTS</i></b>
+        </h4><ul class="ul1" data-mce-fragment="1"><li class="li1"><span class=
+        "s1"></span>Stretchy cotton material</li><li class="li1"><span class=
+        "s1"></span>Low impact</li><li class="li1"><span class="s1"></span>
+        Rounded camisole neckline</li><li class="li1"><span class="s1"></span>
+        Easily adjustable straps</li><li class="li1"><span class="s1"></span>
+        Reinforced binding arm and neckline finishing</li><li class="li1"><span 
+        class="s1"></span>Custom jacquard waistband with knitted in Alphalete 
+        wordmark</li><li class="li1"><span class="s1"></span>Double layered bra 
+        construction</li></ul><h4 class="p1" data-mce-fragment="1"><b data-mce-
+        fragment="1"><i data-mce-fragment="1">FIT SUGGESTION</i></b></h4><ul 
+        class="ul1" data-mce-fragment="1"><li class="li2" data-mce-fragment="1">
+        <span class="s1" data-mce-fragment="1"></span>This item runs true to 
+        Alphalete’s standard fit.</li><li class="li2" data-mce-fragment="1">
+        <span class="s1" data-mce-fragment="1"></span>If you are between sizes, 
+        we recommend sizing up for a relaxed fit.</li><li class="li2" data-mce-
+        fragment="1"><span class="s1" data-mce-fragment="1"></span>Model is 
+        5’8”/1172cm, wearing a size XS with a 31”/78.7cm bust.</li></ul><h4 
+        class="p1" data-mce-fragment="1"><b data-mce-fragment="1"><i data-mce-
+        fragment="1">MATERIALS AND WASHING DIRECTIONS</i></b></h4><ul class=
+        "ul1" data-mce-fragment="1"><li class="li1"><span class="s1"></span>
+        46.5% Cotton, 46.5% Modal, 7% Elastane</li><li class="li1">We recommend 
+        washing inside-out on a cold setting<span class="s1"></span></li><li 
+        class="li1">Hang to dry</li></ul><p class="p1">Introducing our new 
+        intimates collection, crafted from soft, comfortable cotton for a loungy
+         feel. Our Acute collection features a variety of intimate pieces in 
+         different styles and sizes that are perfect for everyday wear or 
+         special occasions. Made from a blend of cotton for breathability, modal
+          for a soft elevated smooth feel and elastane for improved comfort and 
+          shape retention. Our intimates are made to make you feel confident and
+           comfortable throughout the day.</p>"""
+
+        expected_result = ["46.5% cotton", "46.5% modal", "7% elastane"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
 
 class ParseCSSColorsTest(unittest.TestCase):
     def test_case_1(self):

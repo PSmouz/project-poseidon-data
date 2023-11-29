@@ -1,30 +1,75 @@
 import re
-from w3lib.html import remove_tags
+
+from bs4 import BeautifulSoup
 
 
-def extract_materials(value):
+# from w3lib.html import remove_tags
+
+
+def extract_materials(html_text):
     """
     Passes tests for:
      - Teveo
 
     Args:
-        value:
+        html_text:
 
     Returns:
 
     """
-    # Regex pattern to match percentage and material
 
+    def remove_tags(html_text):
+        """
+        Removes HTML tags from a string.
+        Args:
+            html_text:
+
+        Returns:
+
+        """
+        soup = BeautifulSoup(html_text.replace("\\", ""), "html.parser")
+        return soup.get_text(separator=" ", strip=True)
+
+    def remove_span_tags(html_text):
+        """Removes HTML span tags from a string.
+
+        The opening and closing tags are removed separately to avoid overlapping
+        tags. The text between the tags is preserved. The span tags can also
+        have various attributes in the opening tag.
+
+        Args:
+            html_text: The HTML text to remove the <span> tags from.
+
+        Returns:
+            The HTML text with the <span> tags removed, but inner text
+            preserved.
+        """
+        # Capture <span> tags, open and close separately to avoid overlapping
+        # <span\s*.*?> because there can be attributes in the opening tag
+        s = re.compile(r"<span\s*.*?>")
+        s2 = re.compile(r"</span>")
+
+        # Replace <span> tags with their inner text in the value
+        text = re.sub(s, "", html_text)
+        cleaned_text = re.sub(s2, "", text)
+        return cleaned_text
+
+    # Regex pattern to match percentage and material
     pattern = re.compile(
-        r"(\d{1,3}\s?%)\s*([\w\s]+?)(?=(?:\s*,|\s*<|\s*(?:\d{1,"
-        r"3}\s?%|$|\s*[&.]|\s*und)))"
+        r"(?P<percentage>\d{1,3}(?:\.\d{1,2})?(?:\s*|&nbsp;)%)(?:\s*|&nbsp;)"
+        r"(?P<material>[\w\s]+?)(?=\s*,|\s*<|\s*(?:\d{1,3}\s?%|$|\s*[&.]|"
+        r"\s*und))"
     )
 
+    # Needed because backslashes create problems for tag removal.
+    text = html_text.replace("\\", "")
+    # Remove HTML tags from the value
+    clean_text = remove_span_tags(text)
     # Extract matches from the value
-    matches = pattern.findall(remove_tags(value))
+    matches = pattern.findall(clean_text)
     # Concatenate percentage and material, convert material to lowercase
     result = [
-        f"{percentage.replace(' ', '')} {material.lower()}"
+        f"{percentage.replace(' ', '').strip()} {material.lower()}"
         for percentage, material in matches
     ]
 
@@ -41,10 +86,6 @@ def parse_css_colors(css):
     Returns:
 
     """
-    # pattern = (
-    #     r"\.([\w-]+)(?:,\s*([\w-]+))?\s*{\s*background-color\s*:\s*#(["
-    #     r"0-9a-fA-F]+)(?:\s*;\s*)?}"
-    # )
     pattern = (
         r"\.([\w-]+)(?:,\s*([\w-]+))?\s*{\s*background-color\s*:\s*#(["
         r"0-9a-fA-F]+)(?:\s*;\s*)?}"
@@ -341,3 +382,118 @@ color_map = {
     "oa-product-color--rose-violet": "#c14189",
     "oa-product-color--candy-red": "#b20f2e",
 }
+
+
+class Node:
+    """Implementation of a Node for a hashtable.
+
+    Attributes:
+        key: The key of the node.
+        value: The value of the node.
+        next: The next node in the linked list.
+
+    """
+
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
+
+
+class HashTable:
+    """Implementation of a hashtable.
+
+    Attributes:
+        capacity: The capacity of the hashtable/number of buckets.
+        size: The size of the hashtable.
+        table: The table of the hashtable.
+    """
+
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.size = 0
+        self.table = [None] * capacity
+
+    def _hash(self, key):
+        return hash(key) % self.capacity
+
+    def insert(self, key, value):
+        """Inserts a key-value pair into the hashtable.
+
+        Args:
+            key: The key of the key-value pair.
+            value: The value of the key-value pair.
+
+        """
+        index = self._hash(key)
+
+        if self.table[index] is None:
+            self.table[index] = Node(key, value)
+            self.size += 1
+        else:
+            current = self.table[index]
+            while current:
+                if current.key == key:
+                    current.value = value
+                    return
+                current = current.next
+            new_node = Node(key, value)
+            new_node.next = self.table[index]
+            self.table[index] = new_node
+            self.size += 1
+
+    def search(self, key):
+        """Searches for a key in the hashtable.
+
+        Args:
+            key: The key to search for.
+
+        Returns:
+            The value of the key-value pair.
+        """
+        index = self._hash(key)
+
+        current = self.table[index]
+        while current:
+            if current.key == key:
+                return current.value
+            current = current.next
+
+        raise KeyError(key)
+
+    def remove(self, key):
+        """Removes a key-value pair from the hashtable.
+
+        Args:
+            key: The key of the key-value pair to remove.
+
+        Returns:
+            The value of the removed key-value pair.
+        """
+        index = self._hash(key)
+
+        previous = None
+        current = self.table[index]
+
+        while current:
+            if current.key == key:
+                if previous:
+                    previous.next = current.next
+                else:
+                    self.table[index] = current.next
+                self.size -= 1
+                return
+            previous = current
+            current = current.next
+
+        raise KeyError(key)
+
+    def __len__(self):
+        return self.size
+
+    def __contains__(self, key):
+        try:
+            self.search(key)
+            return True
+        except KeyError:
+            return False

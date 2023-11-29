@@ -162,3 +162,22 @@ class NVGTNItem(scrapy.Item):
         input_processor=MapCompose(lambda x: float(x / 100.0)),
         output_processor=lambda x: take_max(x),
     )
+
+
+class AlphaleteItem(scrapy.Item):
+    url = scrapy.Field(output_processor=TakeFirst())
+    id = scrapy.Field(output_processor=TakeFirst())
+    name = scrapy.Field(
+        input_processor=MapCompose(str.strip), output_processor=TakeFirst()
+    )
+    category_name = scrapy.Field(output_processor=TakeFirst())
+    collection_name = scrapy.Field(output_processor=TakeFirst())
+    images = scrapy.Field()
+    materials = scrapy.Field(input_processor=MapCompose(extract_materials))
+    sizes = scrapy.Field()
+    color = scrapy.Field()
+    price = scrapy.Field(
+        # SurrealDB handles Price Object
+        input_processor=MapCompose(lambda x: float(x / 100.0)),
+        output_processor=lambda x: take_max(x),
+    )
