@@ -1,6 +1,7 @@
 """
 Test the utils module.
 """
+
 import unittest
 
 from src.utils import extract_materials, parse_css_colors
@@ -333,6 +334,41 @@ class ExtractMaterialsTest(unittest.TestCase):
            comfortable throughout the day.</p>"""
 
         expected_result = ["46.5% cotton", "46.5% modal", "7% elastane"]
+        result = extract_materials(value)
+        self.assertEqual(result, expected_result)
+
+    def test_gkelite_case_1(self):
+        """GKElite Case 1:"""
+        value = """In the world of gymnastics, confidence is key. The Results 
+        Tank Leotard embodies the self-assured spirit of Jade Carey, who feels 
+        most confident when she puts in the hard work. The sublimated blue and 
+        white pattern on the navy tank leotard represent dedication and 
+        tenacity, and the Silver Matte Spanglez™ on the front chest capture the
+         shimmer of victory. In this tank leotard designed by Jade herself, you 
+         can conquer the mat with confidence knowing that you’re ready to be 
+         there!<br><br><b>Features &amp; Benefits</b><ul><li>Jade Carey 
+         gymnastics leotard</li>	<li>GK x Jade logo on left hip</li>	<li>
+         Workout / Traditional leg cut</li>	<li>Workout tank sleeve</li><li>Navy
+          tank leotard</li>	<li>Sublimated blue and white pattern</li>	<li>
+          Silver Matte Spanglez™ on front chest</li>	<li>Matching royal 
+          scrunchie</li>	<li>Scoop neck front</li>	<li>Straight strap back
+          </li>	<li>Leotard designed by Jade Carey</li></ul><br><b>Fabric 
+          Content: </b>Leotard: 82% Polyester / 18% Spandex | Straps: 80% Nylon 
+          / 20% Spandex<br><br>The scoop neck front and straight strap back 
+          provide both style and functionality, ensuring you're ready for every 
+          routine, while The GK x Jade logo on the left hip represents a 
+          partnership that celebrates excellence. When those competition-day 
+          nerves kick in, remember Jade's advice, “take a deep breath and trust 
+          in your training.” With a matching rich royal scrunchie to complete 
+          the look, you'll be geared up to get results!<br><br>Jade is a star 
+          among stars, and you can shine at every practice in these <a href="
+          https://www.gkelite.com/collections/jade-carey">leotards</a> designed 
+          by Jade herself!<br><br>Placing an order for your team or pro shop? 
+          <a href="https://www.gkelite.com/account/login">Log in</a> to see 
+          dealer pricing or contact your local <a href="https://www.gkelite.com/
+          pages/gk-gym-us-sales-team">GK Sales Representative</a> today."""
+
+        expected_result = ["82% polyester", "18% spandex"]
         result = extract_materials(value)
         self.assertEqual(result, expected_result)
 

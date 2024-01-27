@@ -54,11 +54,40 @@ def extract_materials(html_text):
         cleaned_text = re.sub(s2, "", text)
         return cleaned_text
 
+    def materials_sum_up_to_100(materials: list) -> list:
+        """Makes sure that the sum of the percentages is 100.
+
+        If the sum is greater than 100, the function returns the first
+        materials that sum up to 100. If the sum is less than 100, the
+        function returns the materials as they are. (This is especially used
+        with the GKElite leotard materials, where the sum is greater than 100
+        as they differ between leotard and straps for example.)
+
+
+        Args:
+            materials: The list of materials with percentages e.g. ["82%
+            Polyester", "18% Spandex"]
+
+        Returns: The first k materials that sum up to 100.
+
+        """
+        sum_percentage = 0.0
+        out = []
+        for material in materials:
+            percentage = float(material.split("%")[0])
+            sum_percentage += percentage
+            if sum_percentage > 100.0:
+                break
+            out.append(material)
+            if sum_percentage == 100.0:
+                break
+        return out
+
     # Regex pattern to match percentage and material
     pattern = re.compile(
         r"(?P<percentage>\d{1,3}(?:\.\d{1,2})?(?:\s*|&nbsp;)%)(?:\s*|&nbsp;)"
         r"(?P<material>[\w\s]+?)(?=\s*,|\s*<|\s*(?:\d{1,3}\s?%|$|\s*[&.]|"
-        r"\s*und))"
+        r"\s*und|\s*\/|\s*\|))"
     )
 
     # Needed because backslashes create problems for tag removal.
@@ -73,7 +102,7 @@ def extract_materials(html_text):
         for percentage, material in matches
     ]
 
-    return result
+    return materials_sum_up_to_100(result)
 
 
 def parse_css_colors(css):
