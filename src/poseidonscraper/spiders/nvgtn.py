@@ -34,6 +34,7 @@ from scrapy.loader import ItemLoader
 from ..items import NVGTNItem
 
 
+# TODO: Fix item url
 class NVGTNSpider(scrapy.Spider):
     name = "nvgtn"
     allowed_domains = ["nvgtn.com"]
