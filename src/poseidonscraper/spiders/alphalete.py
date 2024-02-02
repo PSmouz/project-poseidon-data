@@ -18,14 +18,11 @@ Categories (default all):
     - underwear
     - skirts
 
-Country (default de):
-    - de
-    - us
-
 Example Usage:
-    scrapy crawl gymshark -a country=de -a categories=leggings,skorts
+    scrapy crawl alphalete -a country=de -a categories=leggings,skorts
 
 """
+
 import json
 import re
 import math
@@ -45,7 +42,7 @@ class AlphaleteSpider(scrapy.Spider):
         "premium-alphalete.mybcapps.com",
     ]
 
-    def __init__(self, categories=None, country="us", *args, **kwargs):
+    def __init__(self, categories=None, *args, **kwargs):
         super(AlphaleteSpider, self).__init__(*args, **kwargs)
 
         # Select Category from CL Argument
