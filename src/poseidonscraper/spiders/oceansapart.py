@@ -20,7 +20,7 @@ Categories (default all):
 Example Usage:
     scrapy crawl oceansapart -a categories=leggings
 """
-import re
+
 import uuid
 
 import requests
@@ -102,6 +102,7 @@ class OceansapartSpider(scrapy.Spider):
         Args:
             response:
         """
+
         color_code = (
             response.xpath(
                 "string(//*[contains(@class, "
@@ -110,6 +111,17 @@ class OceansapartSpider(scrapy.Spider):
             .get()
             .split(" ")[1]
         )
+
+        color_value = ""
+        if color_code in self.color_map:
+            color_value = self.color_map[color_code]
+        else:
+            self.logger.warning(
+                f"Color code not found: {color_code}. Update color map."
+                f"URL: https://cdn.oceansapart.com/de/wp-content/plugins"
+                f"/oceansapart-extensions/includes/color-bubbles/css/colors"
+                f".css"
+            )
 
         loader = ItemLoader(item=OceansapartItem(), response=response)
         loader.add_value("url", response.url)
@@ -140,7 +152,7 @@ class OceansapartSpider(scrapy.Spider):
                 )
                 .get()
                 .lower(),
-                "value": self.color_map[color_code],
+                "value": color_value,
             },
         )
         loader.add_xpath(
@@ -151,34 +163,62 @@ class OceansapartSpider(scrapy.Spider):
             "price",
             "/html/body/main/main/section/article/div[2]/p/del/span/bdi/text()",
         )  # Sale Price
-
         yield loader.load_item()
 
     def get_color_map(self):
         """Requests a css file for color map."""
-        # TODO: Fix regex
-        # url = (
-        #     "https://cdn.oceansapart.com/de/wp-content/plugins/oceansapart"
-        #     "-extensions/includes/color-bubbles/css/colors.css?ver=3.112.0"
-        # )
-        # css = requests.get(url).text
-        # self.color_map = parse_css_colors(css)
-        self.color_map = color_map.copy()
+        url = (
+            "https://cdn.oceansapart.com/de/wp-content/plugins/oceansapart"
+            "-extensions/includes/color-bubbles/css/colors.css"
+        )
+        css = requests.get(url).text
+
+        self.color_map = parse_css_colors(css)
 
 
 # JSON Alternative:
-# id = re.search(r'postid-(\d+)', response.xpath('//body/@class').get(
-# )).group(1) product = requests.get(
-# f"https://www.oceansapart.com/de/wp-json/wc/store/v1/products/{id}").json()
-# image_urls = [image['src'] for image in product['images']] sizes = [size[
-# 'attributes'][0]['value'] for size in product['variations']].reverse()
 
-# l.add_xpath("name", '/html/body/main/main/section/article/div[
-# 1]/h1/text()') l.add_value("category_name", response.meta[
-# 'original_url']) l.add_value("images", image_urls) l.add_value(
-# "materials", product['description']) l.add_value("sizes", sizes)
-# l.add_xpath("color_name",
-# '/html/body/main/main/section/article/div[1]/h1/span/text()')
-# l.add_value("color_value", self.color_map[color_code]) l.add_value(
-# "price", product['prices']['price']) l.add_value("price", product[
-# 'prices']['sale_price'])
+
+# id = re.search(
+#             r"postid-(\d+)", response.xpath("//body/@class").get()
+#         ).group(1)
+#         product = requests.get(
+#             f"https://www.oceansapart.com/de/wp-json/wc/store/v1/products/{id}"
+#         ).json()
+#
+#         print(product)
+#
+#         image_urls = [image["src"] for image in product["images"]]
+#         sizes = [
+#             size["attributes"][0]["value"] for size in product["variations"]
+#         ].reverse()
+
+# loader.add_xpath(
+#     "name", "/html/body/main/main/section/article/div[1]/h1/text()"
+# )
+# loader.add_value("category_name", response.meta["original_url"])
+# loader.add_value("images", image_urls)
+# loader.add_value("materials", product["description"])
+# loader.add_value("sizes", sizes)
+# loader.add_value(
+#     "color",
+#     {
+#         "name": response.xpath(
+#             "/html/body/main/main/section/article/div[1]/h1/span/text()"
+#         )
+#         .get()
+#         .lower(),
+#         "value": color_value,
+#     },
+# )
+# loader.add_value(
+#     "rating",
+#     {
+#         "rating": float(product["average_rating"]) or 0.0,
+#         "reviews_number": product["review_count"] or 0,
+#     },
+# )
+# loader.add_value("in_stock", product["is_in_stock"])
+# loader.add_value("low_stock_remaining", product["low_stock_remaining"])
+# loader.add_value("price", product["prices"]["price"])
+# loader.add_value("price", product["prices"]["sale_price"])
