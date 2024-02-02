@@ -78,9 +78,11 @@ class LoungeItem(scrapy.Item):
     )
     category_name = scrapy.Field(
         input_processor=MapCompose(
-            lambda x: x.split("/")[4].split("-")[0]
-            if "-" in x.split("/")[4]
-            else x.split("/")[4]
+            lambda x: (
+                x.split("/")[4].split("-")[0]
+                if "-" in x.split("/")[4]
+                else x.split("/")[4]
+            )
         ),
         output_processor=TakeFirst(),
     )
@@ -140,9 +142,11 @@ class NVGTNItem(scrapy.Item):
     )
     category_name = scrapy.Field(
         input_processor=MapCompose(
-            lambda x: x.split("/")[4].split("-")[1]
-            if "accessories" not in x
-            else "underwear"
+            lambda x: (
+                x.split("/")[4].split("-")[1]
+                if "accessories" not in x
+                else "underwear"
+            )
         ),
         output_processor=TakeFirst(),
     )
@@ -180,4 +184,54 @@ class AlphaleteItem(scrapy.Item):
         # SurrealDB handles Price Object
         input_processor=MapCompose(lambda x: float(x / 100.0)),
         output_processor=lambda x: take_max(x),
+    )
+
+
+class GKEliteItem(scrapy.Item):
+    url = scrapy.Field(
+        input_processor=MapCompose(lambda x: x.split("?")[0]),
+        output_processor=TakeFirst(),
+    )
+    id = scrapy.Field(output_processor=TakeFirst())
+    name = scrapy.Field(output_processor=TakeFirst())
+    category_name = scrapy.Field(output_processor=TakeFirst())
+    collection_name = scrapy.Field(output_processor=TakeFirst())
+    # rating = scrapy.Field(output_processor=TakeFirst())
+    images = scrapy.Field()
+    materials = scrapy.Field(
+        input_processor=MapCompose(extract_materials),
+    )
+    sizes = scrapy.Field()
+    color = scrapy.Field(
+        input_processor=MapCompose(str.lower), output_processor=TakeFirst()
+    )
+    price = scrapy.Field(
+        input_processor=MapCompose(lambda x: float(int(x)) / 100 if x else 0.0),
+        output_processor=Compose(max),
+    )
+
+
+class SkimsItem(scrapy.Item):
+    url = scrapy.Field(
+        input_processor=MapCompose(lambda x: "https://skims.com/products/" + x),
+        output_processor=TakeFirst(),
+    )
+    id = scrapy.Field(output_processor=TakeFirst())
+    name = scrapy.Field(
+        input_processor=MapCompose(lambda x: x.split(" | ")[0]),
+        output_processor=TakeFirst(),
+    )
+    category_name = scrapy.Field(output_processor=TakeFirst())
+    collection_name = scrapy.Field(output_processor=TakeFirst())
+    images = scrapy.Field()
+    status = scrapy.Field(output_processor=TakeFirst())
+    type = scrapy.Field()
+    materials = scrapy.Field(
+        input_processor=MapCompose(extract_materials),
+    )
+    sizes = scrapy.Field()
+    color = scrapy.Field(output_processor=TakeFirst())
+    price = scrapy.Field(
+        input_processor=MapCompose(lambda x: round(x, 2)),
+        output_processor=Compose(max),
     )

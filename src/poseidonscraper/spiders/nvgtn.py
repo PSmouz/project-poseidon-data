@@ -1,6 +1,6 @@
 """NVGTN spider
 
-This spider crawls the gymshark.com website and extracts the following
+This spider crawls the nvgtn.com website and extracts the following
 information from the product pages:
 
 - Product Name
@@ -16,18 +16,12 @@ information from the product pages:
 Categories (default all):
     - leggings
     - underwear
-    - dresses
-    - skorts
-    - all-in-one
-
-Country (default de):
-    - de
-    - us
 
 Example Usage:
-    scrapy crawl gymshark -a country=de -a categories=leggings,skorts
+    scrapy crawl nvgtn -a categories=leggings,skorts
 
 """
+
 import json
 import re
 import math
