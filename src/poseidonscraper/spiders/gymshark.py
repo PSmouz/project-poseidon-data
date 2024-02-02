@@ -28,6 +28,7 @@ Example Usage:
     scrapy crawl gymshark -a country=de -a categories=leggings,skorts
 
 """
+
 import json
 import uuid
 
@@ -35,10 +36,6 @@ import scrapy
 from scrapy.loader import ItemLoader
 
 from ..items import GymsharkItem
-
-
-# TODO: ALL-IN-ONE in de für alles in us einzeln
-# TODO: media.src nicht immer kann auch medias.videoSrc sein
 
 
 class GymsharkSpider(scrapy.Spider):
@@ -53,10 +50,12 @@ class GymsharkSpider(scrapy.Spider):
             categories = [
                 "leggings",
                 "underwear",
-                "dresses",
-                "skorts",
                 "all-in-one",
             ]
+
+            if country == "us":
+                categories.append("dresses")
+                categories.append("skorts")
         else:
             categories = categories.split(",")
 
@@ -72,18 +71,30 @@ class GymsharkSpider(scrapy.Spider):
 
     def parse(self, response):
         """
-
         Args:
             response:
         """
-        products_amount = (
-            response.xpath(
-                '//*[@id="MainContent"]/section/div/div/span[2]/text()'
-            )
-            .get()
-            .split(" ")[0]
-        )
-        products_url = response.url + "?viewAll=" + products_amount
+        # text = [
+        #     response.xpath(
+        #         '//*[@id="MainContent"]/div[1]/div/div[1]/span[2]/text()'
+        #     ).get(),
+        #     response.xpath(
+        #         '//*[@id="MainContent"]/section/div/div/span[2]/text()'
+        #     ).get(),
+        #     response.xpath(
+        #         '//*[@id="MainContent"]/div[4]/section/p/text()'
+        #     ).get(),
+        #     response.xpath(
+        #         '//*[@id="MainContent"]/div[3]/section/p/text()'
+        #     ).get(),
+        # ]
+        #
+        # for i, t in enumerate(text):
+        #     if t:
+        #         products_amount = t.split(" ")[0] if i < 2 else t.split(" ")[-2]
+        #         break
+
+        products_url = response.url + "?viewAll=" + str(999)  # products_amount
 
         yield response.follow(products_url, callback=self.parse_products)
 
@@ -93,9 +104,10 @@ class GymsharkSpider(scrapy.Spider):
         Args:
             response:
         """
-        products = response.xpath(
-            '//*[@id="MainContent"]/div[2]/section/div[1]/article'
-        )
+
+        products = response.css("article.product-card_product-card__gB8_b")
+        # Old
+        # response.xpath('//*[@id="MainContent"]/div[2]/section/div[1]/article')
 
         for product in products:
             item_url = product.css("a::attr(href)").extract_first()
@@ -118,7 +130,18 @@ class GymsharkSpider(scrapy.Spider):
         data = json.loads(content)
         product = data["props"]["pageProps"]["productData"]["product"]
 
-        image_urls = [image["src"] for image in product["media"]]
+        image_urls = list(
+            filter(
+                lambda item: item is not None,
+                [image.get("src") for image in product["media"]],
+            )
+        )
+        file_urls = list(
+            filter(
+                lambda item: item is not None,
+                [image.get("videoSrc") for image in product["media"]],
+            )
+        )
         sizes = list(
             map(
                 lambda x: {
@@ -129,8 +152,8 @@ class GymsharkSpider(scrapy.Spider):
             )
         )
         rating = {
-            "rating": float(product["rating"]["average"]),
-            "reviews_number": int(product["rating"]["count"]),
+            "rating": float(product.get("rating", {}).get("average", 0.0)),
+            "reviews_number": int(product.get("rating", {}).get("count", 0)),
         }
 
         loader = ItemLoader(item=GymsharkItem(), response=response)
@@ -141,6 +164,7 @@ class GymsharkSpider(scrapy.Spider):
         loader.add_value("collection_name", product["handle"].split("-")[-1])
         loader.add_value("rating", rating)
         loader.add_value("images", image_urls)
+        loader.add_value("files", file_urls)
         loader.add_value("materials", product["description"])
         loader.add_value("sizes", sizes)
         loader.add_value("color", product["colour"])

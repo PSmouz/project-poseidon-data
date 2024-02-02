@@ -36,6 +36,7 @@ class GymsharkItem(scrapy.Item):
     collection_name = scrapy.Field(output_processor=TakeFirst())
     rating = scrapy.Field(output_processor=TakeFirst())
     images = scrapy.Field()
+    files = scrapy.Field()
     materials = scrapy.Field(
         input_processor=MapCompose(extract_materials),
     )
@@ -63,6 +64,9 @@ class OceansapartItem(scrapy.Item):
     )
     sizes = scrapy.Field(input_processor=Compose(lambda x: x[1:]))
     color = scrapy.Field(output_processor=TakeFirst())
+    low_stock_remaining = scrapy.Field(output_processor=TakeFirst())
+    in_stock = scrapy.Field(output_processor=TakeFirst())
+    rating = scrapy.Field()
     price = scrapy.Field(
         # SurrealDB handles Price Object
         input_processor=MapCompose(lambda x: float(x.replace("\xa0", ""))),

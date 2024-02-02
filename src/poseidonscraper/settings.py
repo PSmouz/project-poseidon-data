@@ -87,6 +87,7 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+DOWNLOAD_FAIL_ON_DATALOSS = False
 
 IMAGES_STORE = (
     f"/Volumes/Development/Dev/PyCharmProjects/project-poseidon"
@@ -94,10 +95,18 @@ IMAGES_STORE = (
 )
 IMAGES_RESULT_FIELD = "images"
 IMAGES_URLS_FIELD = "images"
+FILES_STORE = (
+    f"/Volumes/Development/Dev/PyCharmProjects/project-poseidon"
+    f"-data/data/videos"
+)
+FILES_RESULT_FIELD = "files"
+FILES_URLS_FIELD = "files"
 
 ITEM_PIPELINES = {
     # "poseidonscraper.pipelines.PoseidonscraperPipeline": 300,
     "src.poseidonscraper.pipelines.PoseidonscraperImagesPipeline": 1,
+    "src.poseidonscraper.pipelines.PoseidonscraperFilesPipeline": 1,
+    # "scrapy.pipelines.files.FilesPipeline": 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
