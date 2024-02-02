@@ -375,7 +375,7 @@ class ExtractMaterialsTest(unittest.TestCase):
 
 class ParseCSSColorsTest(unittest.TestCase):
     def test_case_1(self):
-        value = parse_css_colors(
+        value = (
             ".oa-product-color--limona,.oa-product-color--limon {"
             "background-color: #f6ff9f;}"
         )
@@ -383,48 +383,58 @@ class ParseCSSColorsTest(unittest.TestCase):
             "oa-product-color--limona": "#f6ff9f",
             "oa-product-color--limon": "#f6ff9f",
         }
-        result = extract_materials(value)
+        result = parse_css_colors(value)
         self.assertEqual(result, expected_result)
 
     def test_case_2(self):
-        value = parse_css_colors(
-            ".oa-product-color--moon-blue {background-color: #343646}"
-        )
+        value = ".oa-product-color--moon-blue {background-color: #343646}"
         expected_result = {
             "oa-product-color--moon-blue": "#343646",
         }
-        result = extract_materials(value)
+        result = parse_css_colors(value)
         self.assertEqual(result, expected_result)
 
     def test_case_3(self):
-        value = parse_css_colors(
+        value = (
             ".oa-product-color--crystal-white {background-color: "
             "#f8faff;border: 0.0625rem solid rgba(16, 16, 16, 0.6) !important;}"
         )
         expected_result = {
             "oa-product-color--crystal-white": "#f8faff",
         }
-        result = extract_materials(value)
+        result = parse_css_colors(value)
         self.assertEqual(result, expected_result)
 
     def test_case_4(self):
-        value = parse_css_colors(
+        value = (
             ".oa-product-color--bold-hot-pink-swirl {background-color: "
             "#ed3b90;}"
         )
         expected_result = {
             "oa-product-color--bold-hot-pink-swirl": "#ed3b90",
         }
-        result = extract_materials(value)
+        result = parse_css_colors(value)
         self.assertEqual(result, expected_result)
 
     def test_case_5(self):
-        value = parse_css_colors(
-            ".oa-product-color-- * {border: 0.0625rem solid rgba(16, 16, 16, "
-            "0.3);}"
+        value = (
+            ".oa-product-color-- * {border: 0.0625rem solid rgba(16, 16, "
+            "16,0.3);}"
         )
+
         expected_result = {}
-        result = extract_materials(value)
+        result = parse_css_colors(value)
+        self.assertEqual(result, expected_result)
+
+    def test_case_6(self):
+        value = """.oa-product-color--misty-lavender-swirl {
+            background-color: #be9cc1
+        }"""
+
+        expected_result = {
+            "oa-product-color--misty-lavender-swirl": "#be9cc1",
+        }
+        result = parse_css_colors(value)
         self.assertEqual(result, expected_result)
 
 

@@ -115,32 +115,23 @@ def parse_css_colors(css):
     Returns:
 
     """
-    pattern = (
-        r"\.([\w-]+)(?:,\s*([\w-]+))?\s*{\s*background-color\s*:\s*#(["
-        r"0-9a-fA-F]+)(?:\s*;\s*)?}"
+    # Extract color names and codes using regular expression
+    color_pattern = (
+        r"\.oa-product-color--([^{\s,]+)(?:\s*,"
+        r"\s*\.oa-product-color--([^{\s,]+))?(?:[^#]*#(["
+        r"a-fA-F0-9]+)\s*[^}]*}\s*)?"
     )
-    # Find all matches using the pattern
-    matches = re.findall(pattern, css)
-    # Create a dictionary to store the parsed data
-    parsed_data = {}
-    # Process each match and populate the dictionary
-    for match in matches:
-        selector1, selector2, background_color = match
-        selector1 = selector1.strip()
-        selector2 = selector2.strip() if selector2 else None
-        background_color = background_color.strip()
+    matches = re.findall(color_pattern, css)
 
-        # Handle multiple selectors
-        if selector2:
-            selectors = [selector1, selector2]
-        else:
-            selectors = [selector1]
+    # Create a dictionary from the extracted data
+    color_dict = {}
+    for name1, name2, code in matches:
+        if name1 and code:
+            color_dict["oa-product-color--" + name1.strip()] = f"#{code}"
+        if name2 and code:
+            color_dict["oa-product-color--" + name2.strip()] = f"#{code}"
 
-        for selector in selectors:
-            # Update the parsed_data dictionary
-            parsed_data[selector] = "#" + background_color
-
-    return parsed_data
+    return color_dict
 
 
 color_map = {
