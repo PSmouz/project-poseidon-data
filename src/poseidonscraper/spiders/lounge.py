@@ -28,6 +28,7 @@ Example Usage:
     scrapy crawl lounge -a categories=leggings
 
 """
+
 import re
 import scrapy
 import uuid
@@ -113,11 +114,16 @@ class LoungeSpider(scrapy.Spider):
         Args:
             response:
         """
-        # print(response.url)
         content = response.xpath(
             '//script[contains(@type, "application/json") and contains('
             '@data-json, "product-page")]/text()'
         ).get()
+
+        if not content:
+            print("No content found")
+            print(response.url)
+            yield None
+
         data = json.loads(content)
         product = data["product"]
         image_urls = [image["src"] for image in product["images"]]
@@ -173,16 +179,20 @@ class LoungeSpider(scrapy.Spider):
         params = {
             "productId": product_id,
             "storeUrl": "germanylounge.myshopify.com",
-            "page": "1",
-            "take": "24",
         }
-        data = requests.get(  # Chance auch nur overflow
+        response = requests.get(  # Chance auch nur overflow
             url, params=params, headers=self.get_headers()
-        ).json()
-        scrapy.Request(
-            "https://stamped.io/api/widget/reviews?productId=6796023726132"
-            "&storeUrl=germanylounge.myshopify.com&page=1&take=24",
         )
+
+        if not response.ok:
+            return {"rating": 0.0, "reviews_number": 0}
+
+        data = response.json()
+
+        # scrapy.Request(
+        #     "https://stamped.io/api/widget/reviews?productId=6796023726132"
+        #     "&storeUrl=germanylounge.myshopify.com",
+        # )
         return {
             "rating": data["rating"] or 0.0,
             "reviews_number": data["total"] or 0,
